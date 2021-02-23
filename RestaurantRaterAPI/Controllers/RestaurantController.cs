@@ -11,15 +11,24 @@ namespace RestaurantRaterAPI.Controllers
 {
     public class RestaurantController : ApiController
     {
+        private readonly RestaurantDbContext _context = new RestaurantDbContext();
+
         //Post (create)
         // api/Restaurant
         [HttpPost]
         public async Task<IHttpActionResult> CreateRestaurant([FromBody] Restaurant model)
         {
+            if( model is null)
+            {
+                return BadRequest("Your request body cannot be empty.");
+            }
             //If the model is valid
             if (ModelState.IsValid)
             {
                 //Store the model in the database
+                _context.Restaurants.Add(model);
+                int changeCount = await _context.SaveChangesAsync();
+
                 return Ok("your restaurant was created!");
 
             }
