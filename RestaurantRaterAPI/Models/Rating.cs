@@ -11,7 +11,7 @@ namespace RestaurantRaterAPI.Models
     {
         //Primary Key
         [Key]
-        public int Id { get; set; }
+        public int Id { get; set; }  
 
         //Foreign Key
         [ForeignKey(nameof(Restaurant))]
