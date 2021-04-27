@@ -35,7 +35,6 @@ namespace RestaurantRaterAPI.Models
                 return Ratings.Count > 0
                     ? Math.Round(totalAverageRating / Ratings.Count, 2)
                     : 0; //If Ratings.Count not >0
-
             }
         }
         public bool IsRecommended
